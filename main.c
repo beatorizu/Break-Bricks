@@ -37,6 +37,12 @@ struct pont
      int x, y;
 } p1, p2;
 
+struct entity
+{
+     int x, y;
+     BITMAP *sprite;
+} prato;
+
 volatile int exit_program = FALSE; //vari�vel global para controlar a sa�da do programa
 volatile int temporizador;         //vari�vle global para controlar o tempo
 volatile int xx;
@@ -47,7 +53,7 @@ int cs, vidas = 3, pont = 0;
 //pont = pontua��o geral do jogo
 //sJogo = se for verdadeiro mant�m o jogo, sen�o pausa ou sai para o menu inicial
 
-BITMAP *prato, *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *play[2], *cred[2], *sair[2], *logo, *cursor, *bola;
+BITMAP *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *play[2], *cred[2], *sair[2], *logo, *cursor, *bola;
 //ponteiros para as imagens utilizadas no jogo
 
 SAMPLE *breakBlockGlass, *ring;
@@ -270,11 +276,14 @@ void drawTelaJogo()
      install_int_ex(incrementa_y, SECS_TO_TIMER(1));
      //fim timers bolinha
      bola = load_bitmap("draw/bolinha.bmp", NULL);
-     prato = load_bitmap("draw/prato.bmp", NULL);
      t = load_bitmap("draw/teste2.bmp", NULL);
      fim = load_bitmap("draw/gameover.bmp", NULL);
 
-     int x = 400, y = 400, x2 = 300, y2 = 558, area = 0;
+     prato.x = 300;
+     prato.y = 558;
+     prato.sprite = load_bitmap("draw/prato.bmp", NULL);
+
+     int x = 400, y = 400, area = 0;
      cs = 0;
      int temp = 0, ganha = 1000;
 
@@ -293,20 +302,20 @@ void drawTelaJogo()
           textprintf_ex(tela, font, MAX_X / 80, MAX_Y / 60, makecol(255, 255, 255), -1, "Vidas: %d", vidas);
           textprintf_ex(tela, font, MAX_X / 80, MAX_Y / 60 + 15, makecol(255, 255, 255), -1, "Pontos: %d", pont);
           drawStone();
-          draw_sprite(tela, prato, x2, y2);
+          draw_sprite(tela, prato.sprite, prato.x, prato.y);
           draw_sprite(tela, bola, x, y);
-          if (x2 >= 3)
+          if (prato.x >= 3)
           {
                if ((key[KEY_LEFT]) && (!key[KEY_RIGHT]))
                {
-                    x2--;
+                    prato.x--;
                }
           }
-          if (x2 <= 600)
+          if (prato.x <= 600)
           {
                if ((key[KEY_RIGHT]) && (!key[KEY_LEFT]))
                {
-                    x2++;
+                    prato.x++;
                }
           }
 
@@ -345,7 +354,7 @@ void drawTelaJogo()
           }
 
           //COLISAO PRATO BOLINHA
-          if (colli(x, y, bola->w, bola->h, x2, y2, prato->w, prato->h) == TRUE)
+          if (colli(x, y, bola->w, bola->h, prato.x, prato.y, prato.sprite->w, prato.sprite->h) == TRUE)
           {
 
                rands = rand() % 2;
