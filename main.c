@@ -41,11 +41,10 @@ volatile int exit_program = FALSE; //vari�vel global para controlar a sa�da 
 volatile int temporizador;         //vari�vle global para controlar o tempo
 volatile int xx;
 volatile int yy;
-int cs, vidas = 3, pont = 0, pontV = 0;
+int cs, vidas = 3, pont = 0;
 //cs = contador para a fun��o drawStone;
 //vidas = vidas do jogo
 //pont = pontua��o geral do jogo
-//pontV = pontua��o para ganhar vidas
 //sJogo = se for verdadeiro mant�m o jogo, sen�o pausa ou sai para o menu inicial
 
 BITMAP *prato, *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *play[2], *cred[2], *sair[2], *logo, *cursor, *bola;
@@ -255,7 +254,6 @@ void drawTelaJogo()
      int sJogo = FALSE, exit_screen = FALSE, statusJogo = FALSE;
      temporizador = 0;
      pont = 0;
-     pontV = 0;
      statusJogo = FALSE;
      LOCK_FUNCTION(incrementa_temporizador);
      LOCK_VARIABLE(temporizador);
@@ -288,11 +286,6 @@ void drawTelaJogo()
                vidas = 3;
                exit_screen = TRUE;
                statusTela = telaInicial;
-          }
-          if (pontV == 1200)
-          { //se a variavel pontV acumular mais 3600 pontos, ir� adicionar uma vida e ir� zerar pontV
-               addLife();
-               pontV = 0;
           }
           p1.x = MAX_X / 2 - 240;
           p1.y = MAX_Y / 10;
@@ -399,7 +392,11 @@ void drawTelaJogo()
                          if (ametista[5] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -429,7 +426,11 @@ void drawTelaJogo()
                          if (ouro[5] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -459,7 +460,11 @@ void drawTelaJogo()
                          if (citrino[5] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -490,7 +495,11 @@ void drawTelaJogo()
                          if (rubi[5] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -521,7 +530,11 @@ void drawTelaJogo()
                          if (esmeralda[5] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -552,7 +565,11 @@ void drawTelaJogo()
                          if (lapislazuli[5] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -587,7 +604,11 @@ void drawTelaJogo()
                          if (ametista[4] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -618,7 +639,11 @@ void drawTelaJogo()
                          if (ouro[4] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -649,7 +674,11 @@ void drawTelaJogo()
                          if (citrino[4] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -680,7 +709,11 @@ void drawTelaJogo()
                          if (rubi[4] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -711,7 +744,11 @@ void drawTelaJogo()
                          if (esmeralda[4] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -742,7 +779,11 @@ void drawTelaJogo()
                          if (lapislazuli[4] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -777,7 +818,11 @@ void drawTelaJogo()
                          if (ametista[3] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -808,7 +853,11 @@ void drawTelaJogo()
                          if (ouro[3] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -839,7 +888,11 @@ void drawTelaJogo()
                          if (citrino[3] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -870,7 +923,11 @@ void drawTelaJogo()
                          if (rubi[3] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -901,7 +958,11 @@ void drawTelaJogo()
                          if (esmeralda[3] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -932,7 +993,11 @@ void drawTelaJogo()
                          if (lapislazuli[3] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -967,7 +1032,11 @@ void drawTelaJogo()
                          if (ametista[2] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -998,7 +1067,11 @@ void drawTelaJogo()
                          if (ouro[2] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1029,7 +1102,11 @@ void drawTelaJogo()
                          if (citrino[2] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1060,7 +1137,11 @@ void drawTelaJogo()
                          if (rubi[2] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1091,7 +1172,11 @@ void drawTelaJogo()
                          if (esmeralda[2] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1122,7 +1207,11 @@ void drawTelaJogo()
                          if (lapislazuli[2] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1157,7 +1246,11 @@ void drawTelaJogo()
                          if (ametista[1] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1188,7 +1281,11 @@ void drawTelaJogo()
                          if (ouro[1] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1219,7 +1316,11 @@ void drawTelaJogo()
                          if (citrino[1] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1250,7 +1351,11 @@ void drawTelaJogo()
                          if (rubi[1] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1281,7 +1386,11 @@ void drawTelaJogo()
                          if (esmeralda[1] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1312,7 +1421,11 @@ void drawTelaJogo()
                          if (lapislazuli[1] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1335,6 +1448,10 @@ void drawTelaJogo()
                                    topo = 1;
                               }
                               pont += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
                          }
                          lapislazuli[1] = t;
                     }
@@ -1348,7 +1465,11 @@ void drawTelaJogo()
                          if (ametista[0] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1363,6 +1484,10 @@ void drawTelaJogo()
                                    topo = 0;
                               }
                               pont += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
                          }
                          ametista[0] = t;
                     }
@@ -1372,7 +1497,11 @@ void drawTelaJogo()
                          if (ouro[0] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1395,6 +1524,10 @@ void drawTelaJogo()
                                    topo = 1;
                               }
                               pont += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
                          }
                          ouro[0] = t;
                     }
@@ -1404,7 +1537,11 @@ void drawTelaJogo()
                          if (citrino[0] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1427,6 +1564,10 @@ void drawTelaJogo()
                                    topo = 1;
                               }
                               pont += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
                          }
                          citrino[0] = t;
                     }
@@ -1436,7 +1577,11 @@ void drawTelaJogo()
                          if (rubi[0] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1459,6 +1604,10 @@ void drawTelaJogo()
                                    topo = 1;
                               }
                               pont += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
                          }
                          rubi[0] = t;
                     }
@@ -1467,7 +1616,11 @@ void drawTelaJogo()
                          if (esmeralda[0] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1490,6 +1643,10 @@ void drawTelaJogo()
                                    topo = 1;
                               }
                               pont += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
                          }
                          esmeralda[0] = t;
                     }
@@ -1498,7 +1655,11 @@ void drawTelaJogo()
                          if (lapislazuli[0] != t)
                          {
                               pont += 100;
-                              pontV += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
+
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
                               if (esq == 1)
                               {
@@ -1521,6 +1682,10 @@ void drawTelaJogo()
                                    topo = 1;
                               }
                               pont += 100;
+                              if (pont % 1200 == 0)
+                              {
+                                   addLife();
+                              }
                          }
                          lapislazuli[0] = t;
                     }
@@ -1622,7 +1787,6 @@ END_OF_FUNCTION(drawTelaInicial)
 void addPont(int p)
 { //dependendo da cordenada(o valor de y), p ter� um valor que ser� adicionado a pont e pontV
      pont += p;
-     pontV += p;
 }
 
 void addLife()
