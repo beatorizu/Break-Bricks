@@ -402,10 +402,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -436,10 +432,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -466,10 +458,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -505,10 +493,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -540,10 +524,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -571,10 +551,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -614,10 +590,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -645,10 +617,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -684,10 +652,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -715,10 +679,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -754,10 +714,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -785,10 +741,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -828,10 +780,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -859,10 +807,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -898,10 +842,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -929,10 +869,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -968,10 +904,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -999,10 +931,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -1042,10 +970,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -1073,10 +997,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -1112,10 +1032,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -1143,10 +1059,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -1182,10 +1094,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -1213,10 +1121,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -1256,10 +1160,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -1287,10 +1187,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -1326,10 +1222,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -1357,10 +1249,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -1396,10 +1284,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -1427,10 +1311,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -1507,10 +1387,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -1543,10 +1419,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
@@ -1587,10 +1459,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -1626,10 +1494,6 @@ void drawTelaJogo()
                               {
                                    esq = 0;
                               }
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 0)
                               {
                                    esq = 1;
@@ -1661,10 +1525,6 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
                               if (esq == 1)
                               {
                                    esq = 0;
