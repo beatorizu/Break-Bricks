@@ -314,7 +314,7 @@ void drawTelaJogo()
           {
 
                x++;
-               if (x == 800)
+               if (x == 774)
                {
                     esq = 0;
                }
@@ -370,7 +370,7 @@ void drawTelaJogo()
           if (topo == 1)
           {
                y++;
-               if (y == 600)
+               if (y == 573)
                {
                     if (vidas > 0)
                          subLife();
