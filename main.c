@@ -41,7 +41,7 @@ struct entity
 {
      int x, y;
      BITMAP *sprite;
-} prato;
+} bola, prato;
 
 volatile int exit_program = FALSE; //vari�vel global para controlar a sa�da do programa
 volatile int temporizador;         //vari�vle global para controlar o tempo
@@ -53,7 +53,7 @@ int cs, vidas = 3, pont = 0;
 //pont = pontua��o geral do jogo
 //sJogo = se for verdadeiro mant�m o jogo, sen�o pausa ou sai para o menu inicial
 
-BITMAP *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *play[2], *cred[2], *sair[2], *logo, *cursor, *bola;
+BITMAP *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *play[2], *cred[2], *sair[2], *logo, *cursor;
 //ponteiros para as imagens utilizadas no jogo
 
 SAMPLE *breakBlockGlass, *ring;
@@ -275,15 +275,17 @@ void drawTelaJogo()
      LOCK_VARIABLE(yy);
      install_int_ex(incrementa_y, SECS_TO_TIMER(1));
      //fim timers bolinha
-     bola = load_bitmap("draw/bolinha.bmp", NULL);
      t = load_bitmap("draw/teste2.bmp", NULL);
      fim = load_bitmap("draw/gameover.bmp", NULL);
 
      prato.x = 300;
      prato.y = 558;
      prato.sprite = load_bitmap("draw/prato.bmp", NULL);
+     bola.x = 400;
+     bola.y = 400;
+     bola.sprite = load_bitmap("draw/bolinha.bmp", NULL);
 
-     int x = 400, y = 400, area = 0;
+     int area = 0;
      cs = 0;
      int temp = 0, ganha = 1000;
 
@@ -303,7 +305,7 @@ void drawTelaJogo()
           textprintf_ex(tela, font, MAX_X / 80, MAX_Y / 60 + 15, makecol(255, 255, 255), -1, "Pontos: %d", pont);
           drawStone();
           draw_sprite(tela, prato.sprite, prato.x, prato.y);
-          draw_sprite(tela, bola, x, y);
+          draw_sprite(tela, bola.sprite, bola.x, bola.y);
           if (prato.x >= 3)
           {
                if ((key[KEY_LEFT]) && (!key[KEY_RIGHT]))
@@ -322,8 +324,8 @@ void drawTelaJogo()
           if (esq == 1)
           {
 
-               x++;
-               if (x == 774)
+               bola.x++;
+               if (bola.x == 774)
                {
                     esq = 0;
                }
@@ -331,16 +333,16 @@ void drawTelaJogo()
           if (esq == 0)
           {
 
-               x--;
-               if (x == 5)
+               bola.x--;
+               if (bola.x == 5)
                {
                     esq = 1;
                }
           }
           if (topo == 0)
           {
-               y--;
-               if (y == 35)
+               bola.y--;
+               if (bola.y == 35)
                {
                     topo = 1;
                }
@@ -354,7 +356,7 @@ void drawTelaJogo()
           }
 
           //COLISAO PRATO BOLINHA
-          if (colli(x, y, bola->w, bola->h, prato.x, prato.y, prato.sprite->w, prato.sprite->h) == TRUE)
+          if (colli(bola.x, bola.y, bola.sprite->w, bola.sprite->h, prato.x, prato.y, prato.sprite->w, prato.sprite->h) == TRUE)
           {
 
                rands = rand() % 2;
@@ -378,8 +380,8 @@ void drawTelaJogo()
           //ACABA COLISAO PRATO BOLINHA
           if (topo == 1)
           {
-               y++;
-               if (y == 573)
+               bola.y++;
+               if (bola.y == 573)
                {
                     if (vidas > 0)
                          subLife();
@@ -392,11 +394,11 @@ void drawTelaJogo()
                readkey();
                pont = 0;
           }
-          if (y <= 233 && x >= 160 && x <= 630 && y >= 30)
+          if (bola.y <= 233 && bola.x >= 160 && bola.x <= 630 && bola.y >= 30)
           {
-               if (y <= 233 && y >= 30 && x >= 572 && x <= 642)
+               if (bola.y <= 233 && bola.y >= 30 && bola.x >= 572 && bola.x <= 642)
                {
-                    if (y <= 240 && y >= 210)
+                    if (bola.y <= 240 && bola.y >= 210)
                     {
                          if (ametista[5] != t)
                          {
@@ -426,7 +428,7 @@ void drawTelaJogo()
                          }
                          ametista[5] = t;
                     }
-                    if (y <= 210 && y >= 180)
+                    if (bola.y <= 210 && bola.y >= 180)
                     {
                          if (ouro[5] != t)
                          {
@@ -456,7 +458,7 @@ void drawTelaJogo()
                          }
                          ouro[5] = t;
                     }
-                    if (y <= 180 && y >= 150)
+                    if (bola.y <= 180 && bola.y >= 150)
                     {
                          if (citrino[5] != t)
                          {
@@ -486,7 +488,7 @@ void drawTelaJogo()
                          }
                          citrino[5] = t;
                     }
-                    if (y <= 150 && y >= 120)
+                    if (bola.y <= 150 && bola.y >= 120)
                     {
 
                          if (rubi[5] != t)
@@ -517,7 +519,7 @@ void drawTelaJogo()
                          }
                          rubi[5] = t;
                     }
-                    if (y <= 120 && y >= 90)
+                    if (bola.y <= 120 && bola.y >= 90)
                     {
 
                          if (esmeralda[5] != t)
@@ -548,7 +550,7 @@ void drawTelaJogo()
                          }
                          esmeralda[5] = t;
                     }
-                    if (y <= 90 && y >= 30)
+                    if (bola.y <= 90 && bola.y >= 30)
                     {
 
                          if (lapislazuli[5] != t)
@@ -580,10 +582,10 @@ void drawTelaJogo()
                          lapislazuli[5] = t;
                     }
                }
-               if (y <= 231 && y >= 37 && x >= 485 && x <= 555)
+               if (bola.y <= 231 && bola.y >= 37 && bola.x >= 485 && bola.x <= 555)
                {
 
-                    if (y <= 240 && y >= 210)
+                    if (bola.y <= 240 && bola.y >= 210)
                     {
 
                          if (ametista[4] != t)
@@ -614,7 +616,7 @@ void drawTelaJogo()
                          }
                          ametista[4] = t;
                     }
-                    if (y <= 210 && y >= 180)
+                    if (bola.y <= 210 && bola.y >= 180)
                     {
 
                          if (ouro[4] != t)
@@ -645,7 +647,7 @@ void drawTelaJogo()
                          }
                          ouro[4] = t;
                     }
-                    if (y <= 180 && y >= 150)
+                    if (bola.y <= 180 && bola.y >= 150)
                     {
 
                          if (citrino[4] != t)
@@ -676,7 +678,7 @@ void drawTelaJogo()
                          }
                          citrino[4] = t;
                     }
-                    if (y <= 150 && y >= 120)
+                    if (bola.y <= 150 && bola.y >= 120)
                     {
 
                          if (rubi[4] != t)
@@ -707,7 +709,7 @@ void drawTelaJogo()
                          }
                          rubi[4] = t;
                     }
-                    if (y <= 120 && y >= 90)
+                    if (bola.y <= 120 && bola.y >= 90)
                     {
 
                          if (esmeralda[4] != t)
@@ -738,7 +740,7 @@ void drawTelaJogo()
                          }
                          esmeralda[4] = t;
                     }
-                    if (y <= 90 && y >= 30)
+                    if (bola.y <= 90 && bola.y >= 30)
                     {
 
                          if (lapislazuli[4] != t)
@@ -770,10 +772,10 @@ void drawTelaJogo()
                          lapislazuli[4] = t;
                     }
                }
-               if (y <= 231 && y >= 37 && x >= 398 && x <= 468)
+               if (bola.y <= 231 && bola.y >= 37 && bola.x >= 398 && bola.x <= 468)
                {
 
-                    if (y <= 240 && y >= 210)
+                    if (bola.y <= 240 && bola.y >= 210)
                     {
 
                          if (ametista[3] != t)
@@ -804,7 +806,7 @@ void drawTelaJogo()
                          }
                          ametista[3] = t;
                     }
-                    if (y <= 210 && y >= 180)
+                    if (bola.y <= 210 && bola.y >= 180)
                     {
 
                          if (ouro[3] != t)
@@ -835,7 +837,7 @@ void drawTelaJogo()
                          }
                          ouro[3] = t;
                     }
-                    if (y <= 180 && y >= 150)
+                    if (bola.y <= 180 && bola.y >= 150)
                     {
 
                          if (citrino[3] != t)
@@ -866,7 +868,7 @@ void drawTelaJogo()
                          }
                          citrino[3] = t;
                     }
-                    if (y <= 150 && y >= 120)
+                    if (bola.y <= 150 && bola.y >= 120)
                     {
 
                          if (rubi[3] != t)
@@ -897,7 +899,7 @@ void drawTelaJogo()
                          }
                          rubi[3] = t;
                     }
-                    if (y <= 120 && y >= 90)
+                    if (bola.y <= 120 && bola.y >= 90)
                     {
 
                          if (esmeralda[3] != t)
@@ -928,7 +930,7 @@ void drawTelaJogo()
                          }
                          esmeralda[3] = t;
                     }
-                    if (y <= 90 && y >= 30)
+                    if (bola.y <= 90 && bola.y >= 30)
                     {
 
                          if (lapislazuli[3] != t)
@@ -960,10 +962,10 @@ void drawTelaJogo()
                          lapislazuli[3] = t;
                     }
                }
-               if (y <= 231 && y >= 37 && x >= 311 && x <= 381)
+               if (bola.y <= 231 && bola.y >= 37 && bola.x >= 311 && bola.x <= 381)
                {
 
-                    if (y <= 240 && y >= 210)
+                    if (bola.y <= 240 && bola.y >= 210)
                     {
 
                          if (ametista[2] != t)
@@ -994,7 +996,7 @@ void drawTelaJogo()
                          }
                          ametista[2] = t;
                     }
-                    if (y <= 210 && y >= 180)
+                    if (bola.y <= 210 && bola.y >= 180)
                     {
 
                          if (ouro[2] != t)
@@ -1025,7 +1027,7 @@ void drawTelaJogo()
                          }
                          ouro[2] = t;
                     }
-                    if (y <= 180 && y >= 150)
+                    if (bola.y <= 180 && bola.y >= 150)
                     {
 
                          if (citrino[2] != t)
@@ -1056,7 +1058,7 @@ void drawTelaJogo()
                          }
                          citrino[2] = t;
                     }
-                    if (y <= 150 && y >= 120)
+                    if (bola.y <= 150 && bola.y >= 120)
                     {
 
                          if (rubi[2] != t)
@@ -1087,7 +1089,7 @@ void drawTelaJogo()
                          }
                          rubi[2] = t;
                     }
-                    if (y <= 120 && y >= 90)
+                    if (bola.y <= 120 && bola.y >= 90)
                     {
 
                          if (esmeralda[2] != t)
@@ -1118,7 +1120,7 @@ void drawTelaJogo()
                          }
                          esmeralda[2] = t;
                     }
-                    if (y <= 90 && y >= 30)
+                    if (bola.y <= 90 && bola.y >= 30)
                     {
 
                          if (lapislazuli[2] != t)
@@ -1150,10 +1152,10 @@ void drawTelaJogo()
                          lapislazuli[2] = t;
                     }
                }
-               if (y <= 231 && y >= 37 && x >= 224 && x <= 294)
+               if (bola.y <= 231 && bola.y >= 37 && bola.x >= 224 && bola.x <= 294)
                {
 
-                    if (y <= 240 && y >= 210)
+                    if (bola.y <= 240 && bola.y >= 210)
                     {
 
                          if (ametista[1] != t)
@@ -1184,7 +1186,7 @@ void drawTelaJogo()
                          }
                          ametista[1] = t;
                     }
-                    if (y <= 210 && y >= 180)
+                    if (bola.y <= 210 && bola.y >= 180)
                     {
 
                          if (ouro[1] != t)
@@ -1215,7 +1217,7 @@ void drawTelaJogo()
                          }
                          ouro[1] = t;
                     }
-                    if (y <= 180 && y >= 150)
+                    if (bola.y <= 180 && bola.y >= 150)
                     {
 
                          if (citrino[1] != t)
@@ -1246,7 +1248,7 @@ void drawTelaJogo()
                          }
                          citrino[1] = t;
                     }
-                    if (y <= 150 && y >= 120)
+                    if (bola.y <= 150 && bola.y >= 120)
                     {
 
                          if (rubi[1] != t)
@@ -1277,7 +1279,7 @@ void drawTelaJogo()
                          }
                          rubi[1] = t;
                     }
-                    if (y <= 120 && y >= 90)
+                    if (bola.y <= 120 && bola.y >= 90)
                     {
 
                          if (esmeralda[1] != t)
@@ -1308,7 +1310,7 @@ void drawTelaJogo()
                          }
                          esmeralda[1] = t;
                     }
-                    if (y <= 90 && y >= 30)
+                    if (bola.y <= 90 && bola.y >= 30)
                     {
 
                          if (lapislazuli[1] != t)
@@ -1345,10 +1347,10 @@ void drawTelaJogo()
                          lapislazuli[1] = t;
                     }
                }
-               if (y <= 231 && y >= 37 && x >= 137 && x <= 217)
+               if (bola.y <= 231 && bola.y >= 37 && bola.x >= 137 && bola.x <= 217)
                {
 
-                    if (y <= 240 && y >= 210)
+                    if (bola.y <= 240 && bola.y >= 210)
                     {
 
                          if (ametista[0] != t)
@@ -1380,7 +1382,7 @@ void drawTelaJogo()
                          }
                          ametista[0] = t;
                     }
-                    if (y <= 210 && y >= 180)
+                    if (bola.y <= 210 && bola.y >= 180)
                     {
 
                          if (ouro[0] != t)
@@ -1416,7 +1418,7 @@ void drawTelaJogo()
                          }
                          ouro[0] = t;
                     }
-                    if (y <= 180 && y >= 150)
+                    if (bola.y <= 180 && bola.y >= 150)
                     {
 
                          if (citrino[0] != t)
@@ -1452,7 +1454,7 @@ void drawTelaJogo()
                          }
                          citrino[0] = t;
                     }
-                    if (y <= 150 && y >= 120)
+                    if (bola.y <= 150 && bola.y >= 120)
                     {
 
                          if (rubi[0] != t)
@@ -1488,7 +1490,7 @@ void drawTelaJogo()
                          }
                          rubi[0] = t;
                     }
-                    if (y <= 120 && y >= 90)
+                    if (bola.y <= 120 && bola.y >= 90)
                     {
                          if (esmeralda[0] != t)
                          {
@@ -1523,7 +1525,7 @@ void drawTelaJogo()
                          }
                          esmeralda[0] = t;
                     }
-                    if (y <= 90 && y >= 30)
+                    if (bola.y <= 90 && bola.y >= 30)
                     {
                          if (lapislazuli[0] != t)
                          {
