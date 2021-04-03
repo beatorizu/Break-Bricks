@@ -312,7 +312,7 @@ void drawTelaJogo()
                     prato.x--;
                }
           }
-          if (prato.x <= 600)
+          if (prato.x <= MAX_X - prato.sprite->w - 3)
           {
                if ((key[KEY_RIGHT]) && (!key[KEY_LEFT]))
                {
