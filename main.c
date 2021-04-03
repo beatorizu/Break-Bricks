@@ -41,7 +41,7 @@ struct entity
 {
      int x, y;
      BITMAP *sprite;
-} bola, prato, logo, play, highlighted_play;
+} bola, prato, logo, play, highlighted_play, credits, highlighted_credits;
 
 volatile int exit_program = FALSE; //vari�vel global para controlar a sa�da do programa
 volatile int temporizador;         //vari�vle global para controlar o tempo
@@ -53,7 +53,7 @@ int cs, vidas = 3, pont = 0;
 //pont = pontua��o geral do jogo
 //sJogo = se for verdadeiro mant�m o jogo, sen�o pausa ou sai para o menu inicial
 
-BITMAP *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *cred[2], *sair[2], *cursor;
+BITMAP *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *sair[2], *cursor;
 //ponteiros para as imagens utilizadas no jogo
 
 SAMPLE *breakBlockGlass, *ring;
@@ -1595,8 +1595,12 @@ void drawTelaInicial()
      highlighted_play.sprite = load_bitmap("draw/playSelecionado.bmp", NULL);
      highlighted_play.x = MAX_X / 2 - highlighted_play.sprite->w / 2;
      highlighted_play.y = MAX_Y / 2 - 62;
-     cred[0] = load_bitmap("draw/credits.bmp", NULL);
-     cred[1] = load_bitmap("draw/creditsSelecionado.bmp", NULL);
+     credits.sprite = load_bitmap("draw/credits.bmp", NULL);
+     credits.x = MAX_X / 2 - credits.sprite->w / 2;
+     credits.y = MAX_Y / 2 + 34;
+     highlighted_credits.sprite = load_bitmap("draw/creditsSelecionado.bmp", NULL);
+     highlighted_credits.x = MAX_X / 2 - credits.sprite->w / 2;
+     highlighted_credits.y = MAX_Y / 2 + 34;
      sair[0] = load_bitmap("draw/exit.bmp", NULL);
      sair[1] = load_bitmap("draw/exitSelecionado.bmp", NULL);
      logo.sprite = load_bitmap("draw/BreakBricks.bmp", NULL);
@@ -1622,9 +1626,9 @@ void drawTelaInicial()
                     statusTela = telaJogo;
                }
           }
-          if (mouse_x > MAX_X / 2 - 140 && mouse_x < MAX_X / 2 + 140 && mouse_y > MAX_Y / 2 + 34 && mouse_y < MAX_Y / 2 + 130)
+          if (mouse_x > credits.x && mouse_x < credits.x + credits.sprite->w && mouse_y > credits.y && mouse_y < credits.y + credits.sprite->h)
           {
-               draw_sprite(tela, cred[1], MAX_X / 2 - 140, MAX_Y / 2 + 34);
+               draw_sprite(tela, highlighted_credits.sprite, highlighted_credits.x, highlighted_credits.y);
                if (mouse_b == 1)
                {
                     mouse_b = 0;
@@ -1644,7 +1648,7 @@ void drawTelaInicial()
           }
           draw_sprite(tela, logo.sprite, logo.x, logo.y);
           draw_sprite(tela, play.sprite, play.x, play.y);
-          draw_sprite(tela, cred[0], MAX_X / 2 - 140, MAX_Y / 2 + 34);
+          draw_sprite(tela, credits.sprite, credits.x, credits.y);
           draw_sprite(tela, sair[0], MAX_X / 2 - 55, MAX_Y / 2 + 175);
           show_mouse(tela);
           draw_sprite(screen, tela, 0, 0);
@@ -1652,8 +1656,8 @@ void drawTelaInicial()
      }
      destroy_bitmap(play.sprite);
      destroy_bitmap(highlighted_play.sprite);
-     destroy_bitmap(cred[0]);
-     destroy_bitmap(cred[1]);
+     destroy_bitmap(credits.sprite);
+     destroy_bitmap(highlighted_credits.sprite);
      destroy_bitmap(sair[0]);
      destroy_bitmap(sair[1]);
      destroy_bitmap(logo.sprite);
