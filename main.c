@@ -41,7 +41,7 @@ struct entity
 {
      int x, y;
      BITMAP *sprite;
-} bola, prato, logo;
+} bola, prato, logo, play, highlighted_play;
 
 volatile int exit_program = FALSE; //vari�vel global para controlar a sa�da do programa
 volatile int temporizador;         //vari�vle global para controlar o tempo
@@ -53,7 +53,7 @@ int cs, vidas = 3, pont = 0;
 //pont = pontua��o geral do jogo
 //sJogo = se for verdadeiro mant�m o jogo, sen�o pausa ou sai para o menu inicial
 
-BITMAP *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *play[2], *cred[2], *sair[2], *cursor;
+BITMAP *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *cred[2], *sair[2], *cursor;
 //ponteiros para as imagens utilizadas no jogo
 
 SAMPLE *breakBlockGlass, *ring;
@@ -1589,8 +1589,12 @@ void drawTelaCred()
 
 void drawTelaInicial()
 {
-     play[0] = load_bitmap("draw/play.bmp", NULL);
-     play[1] = load_bitmap("draw/playSelecionado.bmp", NULL);
+     play.sprite = load_bitmap("draw/play.bmp", NULL);
+     play.x = MAX_X / 2 - play.sprite->w / 2;
+     play.y = MAX_Y / 2 - 62;
+     highlighted_play.sprite = load_bitmap("draw/playSelecionado.bmp", NULL);
+     highlighted_play.x = MAX_X / 2 - highlighted_play.sprite->w / 2;
+     highlighted_play.y = MAX_Y / 2 - 62;
      cred[0] = load_bitmap("draw/credits.bmp", NULL);
      cred[1] = load_bitmap("draw/creditsSelecionado.bmp", NULL);
      sair[0] = load_bitmap("draw/exit.bmp", NULL);
@@ -1607,9 +1611,9 @@ void drawTelaInicial()
           { //se a tecla esc for precionada, a vari�vel exit_program recebe TRUE, com isso, o looping principal � interrompido
                exit_program = TRUE;
           }
-          if (mouse_x > MAX_X / 2 - 77 && mouse_x < MAX_X / 2 + 77 && mouse_y > MAX_Y / 2 - 62 && mouse_y < MAX_Y / 2)
+          if (mouse_x > play.x && mouse_x < play.x + play.sprite->w && mouse_y > play.y && mouse_y < play.y + play.sprite->h)
           {
-               draw_sprite(tela, play[1], MAX_X / 2 - 77, MAX_Y / 2 - 62);
+               draw_sprite(tela, highlighted_play.sprite, highlighted_play.x, highlighted_play.y);
                if (mouse_b == 1)
                {
                     mouse_b = 0;
@@ -1639,15 +1643,15 @@ void drawTelaInicial()
                }
           }
           draw_sprite(tela, logo.sprite, logo.x, logo.y);
-          draw_sprite(tela, play[0], MAX_X / 2 - 77, MAX_Y / 2 - 62);
+          draw_sprite(tela, play.sprite, play.x, play.y);
           draw_sprite(tela, cred[0], MAX_X / 2 - 140, MAX_Y / 2 + 34);
           draw_sprite(tela, sair[0], MAX_X / 2 - 55, MAX_Y / 2 + 175);
           show_mouse(tela);
           draw_sprite(screen, tela, 0, 0);
           clear(tela);
      }
-     destroy_bitmap(play[0]);
-     destroy_bitmap(play[1]);
+     destroy_bitmap(play.sprite);
+     destroy_bitmap(highlighted_play.sprite);
      destroy_bitmap(cred[0]);
      destroy_bitmap(cred[1]);
      destroy_bitmap(sair[0]);
