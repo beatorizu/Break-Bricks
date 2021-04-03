@@ -41,7 +41,7 @@ struct entity
 {
      int x, y;
      BITMAP *sprite;
-} bola, prato, logo, play, highlighted_play, credits, highlighted_credits;
+} bola, prato, logo, play, highlighted_play, credits, highlighted_credits, exit_button, highlighted_exit_button;
 
 volatile int exit_program = FALSE; //vari�vel global para controlar a sa�da do programa
 volatile int temporizador;         //vari�vle global para controlar o tempo
@@ -53,7 +53,7 @@ int cs, vidas = 3, pont = 0;
 //pont = pontua��o geral do jogo
 //sJogo = se for verdadeiro mant�m o jogo, sen�o pausa ou sai para o menu inicial
 
-BITMAP *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *sair[2], *cursor;
+BITMAP *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *cursor;
 //ponteiros para as imagens utilizadas no jogo
 
 SAMPLE *breakBlockGlass, *ring;
@@ -1601,8 +1601,12 @@ void drawTelaInicial()
      highlighted_credits.sprite = load_bitmap("draw/creditsSelecionado.bmp", NULL);
      highlighted_credits.x = MAX_X / 2 - credits.sprite->w / 2;
      highlighted_credits.y = MAX_Y / 2 + 34;
-     sair[0] = load_bitmap("draw/exit.bmp", NULL);
-     sair[1] = load_bitmap("draw/exitSelecionado.bmp", NULL);
+     exit_button.sprite = load_bitmap("draw/exit.bmp", NULL);
+     exit_button.x = MAX_X / 2 - exit_button.sprite->w / 2;
+     exit_button.y = MAX_Y / 2 + 175;
+     highlighted_exit_button.sprite = load_bitmap("draw/exitSelecionado.bmp", NULL);
+     highlighted_exit_button.x = MAX_X / 2 - highlighted_exit_button.sprite->w / 2;
+     highlighted_exit_button.y = MAX_Y / 2 + 175;
      logo.sprite = load_bitmap("draw/BreakBricks.bmp", NULL);
      logo.x = MAX_X / 2 - logo.sprite->w / 2;
      logo.y = 0;
@@ -1637,9 +1641,9 @@ void drawTelaInicial()
                     statusTela = telaCred;
                }
           }
-          if (mouse_x > MAX_X / 2 - 55 && mouse_x < MAX_X / 2 + 55 && mouse_y > MAX_Y / 2 + 175 && mouse_y < MAX_Y / 2 + 225)
+          if (mouse_x > exit_button.x && mouse_x < exit_button.x + exit_button.sprite->w && mouse_y > exit_button.y && mouse_y < exit_button.y + exit_button.sprite->h)
           {
-               draw_sprite(tela, sair[1], MAX_X / 2 - 55, MAX_Y / 2 + 175);
+               draw_sprite(tela, highlighted_exit_button.sprite, highlighted_exit_button.x, highlighted_exit_button.y);
                if (mouse_b == 1)
                {
                     exit_program = TRUE;
@@ -1649,7 +1653,7 @@ void drawTelaInicial()
           draw_sprite(tela, logo.sprite, logo.x, logo.y);
           draw_sprite(tela, play.sprite, play.x, play.y);
           draw_sprite(tela, credits.sprite, credits.x, credits.y);
-          draw_sprite(tela, sair[0], MAX_X / 2 - 55, MAX_Y / 2 + 175);
+          draw_sprite(tela, exit_button.sprite, exit_button.x, exit_button.y);
           show_mouse(tela);
           draw_sprite(screen, tela, 0, 0);
           clear(tela);
@@ -1658,8 +1662,8 @@ void drawTelaInicial()
      destroy_bitmap(highlighted_play.sprite);
      destroy_bitmap(credits.sprite);
      destroy_bitmap(highlighted_credits.sprite);
-     destroy_bitmap(sair[0]);
-     destroy_bitmap(sair[1]);
+     destroy_bitmap(exit_button.sprite);
+     destroy_bitmap(highlighted_exit_button.sprite);
      destroy_bitmap(logo.sprite);
      destroy_bitmap(cursor);
 }
