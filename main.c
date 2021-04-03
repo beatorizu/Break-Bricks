@@ -251,7 +251,6 @@ void destroyStone()
 END_OF_FUNCTION(destroyStone)
 
 BITMAP *t, *fim;
-int rands = 0;
 void drawTelaJogo()
 {
      BITMAP *win;
@@ -358,24 +357,8 @@ void drawTelaJogo()
           //COLISAO PRATO BOLINHA
           if (colli(bola.x, bola.y, bola.sprite->w, bola.sprite->h, prato.x, prato.y, prato.sprite->w, prato.sprite->h) == TRUE)
           {
-
-               rands = rand() % 2;
-               if (rands == 1)
-               {
-                    esq = 1;
-               }
-               else
-               {
-                    esq = 0;
-               }
-               if (topo == 0)
-               {
-                    topo = 1;
-               }
-               if (topo == 1)
-               {
-                    topo = 0;
-               }
+               esq = rand() % 2;
+               topo = topo ^ 1;
           }
           //ACABA COLISAO PRATO BOLINHA
           if (topo == 1)
@@ -409,22 +392,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          ametista[5] = t;
                     }
@@ -439,22 +408,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          ouro[5] = t;
                     }
@@ -469,22 +424,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          citrino[5] = t;
                     }
@@ -500,22 +441,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          rubi[5] = t;
                     }
@@ -531,22 +458,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          esmeralda[5] = t;
                     }
@@ -562,22 +475,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          lapislazuli[5] = t;
                     }
@@ -597,22 +496,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          ametista[4] = t;
                     }
@@ -628,22 +513,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          ouro[4] = t;
                     }
@@ -659,22 +530,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          citrino[4] = t;
                     }
@@ -690,22 +547,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          rubi[4] = t;
                     }
@@ -721,22 +564,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          esmeralda[4] = t;
                     }
@@ -752,22 +581,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          lapislazuli[4] = t;
                     }
@@ -787,22 +602,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          ametista[3] = t;
                     }
@@ -818,22 +619,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          ouro[3] = t;
                     }
@@ -849,22 +636,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          citrino[3] = t;
                     }
@@ -880,22 +653,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          rubi[3] = t;
                     }
@@ -911,22 +670,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          esmeralda[3] = t;
                     }
@@ -942,22 +687,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          lapislazuli[3] = t;
                     }
@@ -977,22 +708,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          ametista[2] = t;
                     }
@@ -1008,22 +725,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          ouro[2] = t;
                     }
@@ -1039,22 +742,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          citrino[2] = t;
                     }
@@ -1070,22 +759,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          rubi[2] = t;
                     }
@@ -1101,22 +776,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          esmeralda[2] = t;
                     }
@@ -1132,22 +793,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          lapislazuli[2] = t;
                     }
@@ -1167,22 +814,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          ametista[1] = t;
                     }
@@ -1198,22 +831,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          ouro[1] = t;
                     }
@@ -1229,22 +848,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          citrino[1] = t;
                     }
@@ -1260,22 +865,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          rubi[1] = t;
                     }
@@ -1291,22 +882,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                          }
                          esmeralda[1] = t;
                     }
@@ -1322,22 +899,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                               pont += 100;
                               if (pont % 1200 == 0)
                               {
@@ -1362,18 +925,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                               pont += 100;
                               if (pont % 1200 == 0)
                               {
@@ -1394,22 +947,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                               pont += 100;
                               if (pont % 1200 == 0)
                               {
@@ -1430,22 +969,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                               pont += 100;
                               if (pont % 1200 == 0)
                               {
@@ -1466,22 +991,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                               pont += 100;
                               if (pont % 1200 == 0)
                               {
@@ -1501,22 +1012,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                               pont += 100;
                               if (pont % 1200 == 0)
                               {
@@ -1536,22 +1033,8 @@ void drawTelaJogo()
                               }
 
                               play_sample(breakBlockGlass, 255, 128, 1000, 0);
-                              if (esq == 1)
-                              {
-                                   esq = 0;
-                              }
-                              if (esq == 0)
-                              {
-                                   esq = 1;
-                              }
-                              if (topo == 1)
-                              {
-                                   topo = 0;
-                              }
-                              if (topo == 0)
-                              {
-                                   topo = 1;
-                              }
+                              esq = esq ^ 1;
+                              topo = topo ^ 1;
                               pont += 100;
                               if (pont % 1200 == 0)
                               {
