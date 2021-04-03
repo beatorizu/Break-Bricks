@@ -41,7 +41,7 @@ struct entity
 {
      int x, y;
      BITMAP *sprite;
-} bola, prato;
+} bola, prato, logo;
 
 volatile int exit_program = FALSE; //vari�vel global para controlar a sa�da do programa
 volatile int temporizador;         //vari�vle global para controlar o tempo
@@ -53,7 +53,7 @@ int cs, vidas = 3, pont = 0;
 //pont = pontua��o geral do jogo
 //sJogo = se for verdadeiro mant�m o jogo, sen�o pausa ou sai para o menu inicial
 
-BITMAP *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *play[2], *cred[2], *sair[2], *logo, *cursor;
+BITMAP *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *play[2], *cred[2], *sair[2], *cursor;
 //ponteiros para as imagens utilizadas no jogo
 
 SAMPLE *breakBlockGlass, *ring;
@@ -1595,7 +1595,9 @@ void drawTelaInicial()
      cred[1] = load_bitmap("draw/creditsSelecionado.bmp", NULL);
      sair[0] = load_bitmap("draw/exit.bmp", NULL);
      sair[1] = load_bitmap("draw/exitSelecionado.bmp", NULL);
-     logo = load_bitmap("draw/BreakBricks.bmp", NULL);
+     logo.sprite = load_bitmap("draw/BreakBricks.bmp", NULL);
+     logo.x = MAX_X / 2 - logo.sprite->w / 2;
+     logo.y = 0;
      cursor = load_bitmap("draw/cursor.bmp", NULL);
      set_mouse_sprite(cursor);
      int sJogo = FALSE, exit_screen = FALSE;
@@ -1636,7 +1638,7 @@ void drawTelaInicial()
                     exit_screen = TRUE;
                }
           }
-          draw_sprite(tela, logo, MAX_X / 2 - 127, 0);
+          draw_sprite(tela, logo.sprite, logo.x, logo.y);
           draw_sprite(tela, play[0], MAX_X / 2 - 77, MAX_Y / 2 - 62);
           draw_sprite(tela, cred[0], MAX_X / 2 - 140, MAX_Y / 2 + 34);
           draw_sprite(tela, sair[0], MAX_X / 2 - 55, MAX_Y / 2 + 175);
@@ -1650,7 +1652,7 @@ void drawTelaInicial()
      destroy_bitmap(cred[1]);
      destroy_bitmap(sair[0]);
      destroy_bitmap(sair[1]);
-     destroy_bitmap(logo);
+     destroy_bitmap(logo.sprite);
      destroy_bitmap(cursor);
 }
 END_OF_FUNCTION(drawTelaInicial)
