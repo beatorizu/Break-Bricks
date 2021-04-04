@@ -53,7 +53,7 @@ int cs, vidas = 3, pont = 0;
 //pont = pontua��o geral do jogo
 //sJogo = se for verdadeiro mant�m o jogo, sen�o pausa ou sai para o menu inicial
 
-BITMAP *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *cursor;
+BITMAP *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *cursor, *ametista_sprite, *lapislazuli_sprite, *esmeralda_sprite, *ouro_sprite, *citrino_sprite, *rubi_sprite;
 //ponteiros para as imagens utilizadas no jogo
 
 SAMPLE *breakBlockGlass, *ring;
@@ -133,29 +133,35 @@ void incrementa_y()
 END_OF_FUNCTION(incrementa_y)
 void loadStone()
 {
+     lapislazuli_sprite = load_bitmap("draw/lapislazuli.bmp", NULL);
      for (cs = 0; cs < 6; cs++)
      {
-          lapislazuli[cs] = load_bitmap("draw/lapislazuli.bmp", NULL);
+          lapislazuli[cs] = lapislazuli_sprite;
      }
+     esmeralda_sprite = load_bitmap("draw/esmeralda.bmp", NULL);
      for (cs = 0; cs < 6; cs++)
      {
-          esmeralda[cs] = load_bitmap("draw/esmeralda.bmp", NULL);
+          esmeralda[cs] = esmeralda_sprite;
      }
+     rubi_sprite = load_bitmap("draw/rubi.bmp", NULL);
      for (cs = 0; cs < 6; cs++)
      {
-          rubi[cs] = load_bitmap("draw/rubi.bmp", NULL);
+          rubi[cs] = rubi_sprite;
      }
+     citrino_sprite = load_bitmap("draw/citrino.bmp", NULL);
      for (cs = 0; cs < 6; cs++)
      {
-          citrino[cs] = load_bitmap("draw/citrino.bmp", NULL);
+          citrino[cs] = citrino_sprite;
      }
+     ouro_sprite = load_bitmap("draw/ouro.bmp", NULL);
      for (cs = 0; cs < 6; cs++)
      {
-          ouro[cs] = load_bitmap("draw/ouro.bmp", NULL);
+          ouro[cs] = ouro_sprite;
      }
+     ametista_sprite = load_bitmap("draw/ametista.bmp", NULL);
      for (cs = 0; cs < 6; cs++)
      {
-          ametista[cs] = load_bitmap("draw/ametista.bmp", NULL);
+          ametista[cs] = ametista_sprite;
      }
      //cada la�o de for ir� carregar um vetor de ret�ngulos
 }
@@ -222,31 +228,12 @@ END_OF_FUNCTION(colli)
 
 void destroyStone()
 {
-     for (cs = 0; cs < 6; cs++)
-     {
-          destroy_bitmap(lapislazuli[cs]);
-     }
-     for (cs = 0; cs < 6; cs++)
-     {
-          destroy_bitmap(esmeralda[cs]);
-     }
-     for (cs = 0; cs < 6; cs++)
-     {
-          destroy_bitmap(rubi[cs]);
-     }
-     for (cs = 0; cs < 6; cs++)
-     {
-          destroy_bitmap(citrino[cs]);
-     }
-     for (cs = 0; cs < 6; cs++)
-     {
-          destroy_bitmap(ouro[cs]);
-     }
-     for (cs = 0; cs < 6; cs++)
-     {
-          destroy_bitmap(ametista[cs]);
-     }
-     //cada la�o de for ir� apagar um vetor de ret�ngulos
+     destroy_bitmap(lapislazuli_sprite);
+     destroy_bitmap(esmeralda_sprite);
+     destroy_bitmap(rubi_sprite);
+     destroy_bitmap(citrino_sprite);
+     destroy_bitmap(ouro_sprite);
+     destroy_bitmap(ametista_sprite);
 }
 END_OF_FUNCTION(destroyStone)
 
