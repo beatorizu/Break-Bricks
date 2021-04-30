@@ -1,36 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-//Anota��o:
+//Anotação:
 #include <allegro.h>
-//dimens�o da tela
+//dimensão da tela
 #define MAX_X 800
 #define MAX_Y 600
-//dimens�o da tela virtual, no caso para o uso de scroll
+//dimensão da tela virtual, no caso para o uso de scroll
 #define V_MAX_X 0
 #define V_MAX_Y 0
 //define a intensidade de cores
 #define COLOR_BITS 8
 
 #define PASSO 2
-//define o n�mero de imagens de vetor
+//define o número de imagens de vetor
 #define s 6
 
 void init();
 void deinit();
-void drawStone();               //fun��o para desenhar os blocos
-void drawTelaInicial();         //fun��o para desenhar tela inicial
-void drawTelaJogo();            //fun��o para desenhar tela jogo
-void drawTelaCred();            //fun��o para desenhar tela cr�ditos
-void destroyStone();            //fun��o para liberar a mem�ria usada pelo desenho dos blocos
-void closeGame();               //fun��o para finalizar o jogo
+void drawStone();               //função para desenhar os blocos
+void drawTelaInicial();         //função para desenhar tela inicial
+void drawTelaJogo();            //função para desenhar tela jogo
+void drawTelaCred();            //função para desenhar tela créditos
+void destroyStone();            //função para liberar a memória usada pelo desenho dos blocos
+void closeGame();               //função para finalizar o jogo
 void incrementa_temporizador(); //incrementa o temporizador
 void incrementa_x();
 void incrementa_y();
 void addPont(int p); //adiciona pontos as variaveis globais
 void addLife();      //adiciona uma vida
 void subLife();      //retira uma vida
-//Os par�metros de paleta do draw_sprite est�o como NULL
+//Os parâmetros de paleta do draw_sprite estão como NULL
 //estrutura de pontos, com as cordenadas X e Y
 struct pont
 {
@@ -43,15 +43,15 @@ struct entity
      BITMAP *sprite;
 } bola, prato, logo, play, highlighted_play, credits, highlighted_credits, exit_button, highlighted_exit_button;
 
-volatile int exit_program = FALSE; //vari�vel global para controlar a sa�da do programa
-volatile int temporizador;         //vari�vle global para controlar o tempo
+volatile int exit_program = FALSE; //variável global para controlar a saída do programa
+volatile int temporizador;         //variável global para controlar o tempo
 volatile int xx;
 volatile int yy;
 int cs, vidas = 3, pont = 0;
-//cs = contador para a fun��o drawStone;
+//cs = contador para a função drawStone;
 //vidas = vidas do jogo
-//pont = pontua��o geral do jogo
-//sJogo = se for verdadeiro mant�m o jogo, sen�o pausa ou sai para o menu inicial
+//pont = pontuação geral do jogo
+//sJogo = se for verdadeiro mantém o jogo, senão pausa ou sai para o menu inicial
 
 BITMAP *tela, *ametista[s], *lapislazuli[s], *esmeralda[s], *ouro[s], *citrino[s], *rubi[s], *ball, *cursor, *ametista_sprite, *lapislazuli_sprite, *esmeralda_sprite, *ouro_sprite, *citrino_sprite, *rubi_sprite;
 //ponteiros para as imagens utilizadas no jogo
@@ -64,13 +64,13 @@ enum
      telaJogo,
      telaCred
 };
-//enums para cada tela de jogo que ser� controlado pelo INT statusTela que ser� iniciado com telaInicial
+//enums para cada tela de jogo que será controlado pelo INT statusTela que será iniciado com telaInicial
 int statusTela;
 int main()
 {
      init();
      while (!exit_program)
-     { //enquanto a vari�vel exit_program�vel for n�o falso, executa os comandos
+     { //enquanto a variável exit_programável for não falso, executa os comandos
           if (statusTela == telaInicial)
           {
                drawTelaInicial();
@@ -98,7 +98,7 @@ void init()
           depth = 32;
      set_color_depth(depth);
      res = set_gfx_mode(GFX_AUTODETECT_WINDOWED, MAX_X, MAX_Y, V_MAX_X, V_MAX_Y);
-     set_window_title("Break Bricks"); //muda o t�tulo no topo da janela
+     set_window_title("Break Bricks"); //muda o título no topo da janela
      if (res != 0)
      {
           allegro_message(allegro_error);
@@ -112,7 +112,7 @@ void init()
      breakBlockGlass = load_sample("sounds/ice-block-drop.wav"); //inicia o som do bloco
      ring = load_sample("sounds/ringsSonic.wav");                //inicia o som do bloco
      statusTela = telaInicial;
-     set_close_button_callback(closeGame); //habilita o bot�o 'fechar(X)', tem como par�metro uma fun��o para finalaza��o do game
+     set_close_button_callback(closeGame); //habilita o botão 'fechar(X)', tem como parâmetro uma função para finalazação do game
 }
 
 void incrementa_temporizador()
@@ -163,7 +163,7 @@ void loadStone()
      {
           ametista[cs] = ametista_sprite;
      }
-     //cada la�o de for ir� carregar um vetor de ret�ngulos
+     //cada laço de for irá carregar um vetor de retângulos
 }
 END_OF_FUNCTION(loadStone)
 
@@ -211,11 +211,11 @@ void drawStone()
           draw_sprite(tela, ametista[cs], p1.x, p1.y);
           p1.x += 80;
      }
-     //cada la�o de for ir� desenhar um vetor de ret�ngulos
+     //cada laço de for irá desenhar um vetor de retângulos
 }
 END_OF_FUNCTION(drawStone)
 
-//FUN�AO DA CLISAO DA BOLINHA
+//FUNÇAO DA CLISAO DA BOLINHA
 int colli(int x, int y, int w1, int h1, int x2, int y2, int w2, int h2)
 {
      if ((x > x2 + w2) || (y > y2 + h2) || (x2 > x + w1) || (y2 > y + h1))
@@ -224,7 +224,7 @@ int colli(int x, int y, int w1, int h1, int x2, int y2, int w2, int h2)
           return TRUE;
 }
 END_OF_FUNCTION(colli)
-//FIM DA FUN��Oda bolinha
+//FIM DA FUNÇÃO da bolinha
 
 void destroyStone()
 {
@@ -1086,7 +1086,7 @@ void drawTelaInicial()
      while (!exit_program && !exit_screen)
      {
           if (key[KEY_ESC])
-          { //se a tecla esc for precionada, a vari�vel exit_program recebe TRUE, com isso, o looping principal � interrompido
+          { //se a tecla esc for precionada, a variável exit_program recebe TRUE, com isso, o looping principal é interrompido
                exit_program = TRUE;
           }
           if (mouse_x > play.x && mouse_x < play.x + play.sprite->w && mouse_y > play.y && mouse_y < play.y + play.sprite->h)
@@ -1140,7 +1140,7 @@ void drawTelaInicial()
 END_OF_FUNCTION(drawTelaInicial)
 
 void addPont(int p)
-{ //dependendo da cordenada(o valor de y), p ter� um valor que ser� adicionado a pont e pontV
+{ //dependendo da cordenada(o valor de y), p terá um valor que será adicionado a pont e pontV
      pont += p;
 }
 
